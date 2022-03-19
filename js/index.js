@@ -31,12 +31,6 @@ btnNext.onclick = () => {
     const playerDiv2 = document.createElement("div");
     const header = document.createElement("div");
     playerDiv1.classList.add("playerDiv1");
-    playerDiv1.innerText = `${player1.value}: ${plyer1Choose}`;
-    playerDiv2.innerText = `${player2.value}: ${plyer2Choose}`;
-    header.append(playerDiv1, playerDiv2);
-    header.classList.add("header");
-    container.style.display = "flex";
-    container.before(header);
     localStorage.setItem(
       "info",
       JSON.stringify([
@@ -44,6 +38,15 @@ btnNext.onclick = () => {
         { player2: player2.value, plyer2Choose, result: 0 },
       ])
     );
+
+    playerDiv1.innerText = `${player1.value}: ${plyer1Choose}`;
+    playerDiv2.innerText = `${player2.value}: ${plyer2Choose}`;
+    header.append(playerDiv1, playerDiv2);
+    header.classList.add("header");
+    document.querySelector(".result").style.display = "flex"  
+    container.style.display = "flex";
+    container.before(header);
+
     for (let i = 1; i <= 9; i++) {
       container.innerHTML += `<div class="square" id=${i} onClick="FillXorO(this)"></div>`;
     }
@@ -92,18 +95,19 @@ const calcResult = (currentCLass) => {
           currentCLass === plyer1Choose
             ? player1.value + " win!"
             : player2.value + " win!";
-         const data = JSON.parse(localStorage.getItem("info")) 
-          if(currentCLass === data[0].plyer1Choose){
-            data[0].result =  data[0].result +1;
-          }else {
-            data[1].result =  data[1].result +1;
-          }
-          localStorage.setItem(
-            "info",
-            JSON.stringify(data)
-          );
+        const data = JSON.parse(localStorage.getItem("info"));
+        if (currentCLass === data[0].plyer1Choose) {
+          data[0].result = data[0].result + 1;
+        } else {
+          data[1].result = data[1].result + 1;
+        }
+        localStorage.setItem("info", JSON.stringify(data));
+
+        document.getElementById("res1").innerText = "R: " + data[0].result;
+        document.getElementById("res2").innerText = "R: " + data[1].result;
+
         button.addEventListener("click", () => {
-          Rest();
+          Reset();
           return container2.remove();
         });
         return document.getElementsByTagName("body")[0].after(container2);
@@ -179,7 +183,7 @@ const check = () => {
 };
 
 ///reset the game
-const Rest = () => {
+const Reset = () => {
   const elm = document.querySelectorAll(".square");
   for (let i = 0; i < elm.length; i++) {
     if (elm[i].classList[1]) {
