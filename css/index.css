@@ -50,7 +50,7 @@ h1 {
 
   height: 15vh;
 
-  border: 1px solid rgba(255, 255, 255, 0.75);;
+  border: 1px solid rgba(255, 255, 255, 0.75);
   cursor: pointer;
   text-align: center;
   display: flex;
@@ -75,7 +75,6 @@ h1 {
 .square:nth-child(7) {
   border-bottom: none;
 }
-
 
 .starter {
   display: flex;
@@ -116,7 +115,6 @@ h1 {
   width: 800px;
   border-radius: 12px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-
 }
 
 #btnNext {
@@ -137,7 +135,7 @@ h1 {
 #btnNext:hover {
   background-color: black;
   color: white;
-  border: 1px solid  white;
+  border: 1px solid white;
 }
 
 #input1,
@@ -145,7 +143,7 @@ h1 {
   border-radius: 12px;
   width: 14vw;
   padding: 1rem;
-  font-size:  1.7rem;
+  font-size: 1.7rem;
   font-weight: 600;
   outline: none;
   border-color: #000;
@@ -154,6 +152,8 @@ h1 {
   margin-left: 0;
   margin-top: 0.5rem;
   background-color: rgba(255, 255, 255, 0.75);
+  font-family: "Shadows Into Light", cursive;
+  color: rgb(15, 22, 36);
 }
 
 .play {
@@ -229,7 +229,7 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
   color: white;
@@ -241,9 +241,10 @@ h1 {
   font-size: 3rem;
   background-color: white;
   border: 1px solid black;
-  padding: .25em .5em;
+  padding: 0.25em 0.5em;
   cursor: pointer;
   font-family: "Shadows Into Light", cursive;
+  border-radius: 12px;
 }
 
 .winning-message button:hover {
@@ -251,17 +252,17 @@ h1 {
   color: white;
   border-color: white;
 }
-::-webkit-scrollbar{
-  width:10px
+::-webkit-scrollbar {
+  width: 10px;
 }
-::-webkit-scrollbar-track{
- background-color:#0F1624;
+::-webkit-scrollbar-track {
+  background-color: #0f1624;
 }
 
-::-webkit-scrollbar-thumb{
-  background-color:rgba(255,255,255,0.75);
-  border-radius:2px;
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 2px;
 }
-::-webkit-scrollbar-thumb:hover{
- border-radius:0;
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 0;
 }
