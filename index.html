@@ -1,56 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/index.css" />
-  </head>
-  <body>
-    <div class="container " id="container" >
-    
-    </div>
-    <div class="result">
-      <div id="res1">R1:0</div>
-      <div id="res2">R2:0</div>
-    </div>
-    <div class="formContainer" id="title" >
-      <h1 >TIC TAC TOE</h1>
-      <div class="starter">
-        <div class="play">
-          <label>player1</label>
-          <input id="input1"  />
-        </div>
-        <div class="play">
-          <label>player2</label>
-          <input id="input2"  />
-        </div>
-        
-        <div class="frm1">
-          <label>player1 choose X or O</label>
-          <div class="frm">
-            <input type="radio" name="btnRadio" id="btnRadio" value="X" />X
-          </div>
-          <div id="last1" class="frm">
-            <input type="radio" name="btnRadio" id="btnRadio" value="O" />O
-          </div>
 
-          <div class="frm1">
-           <label>player2 choose X or O</label>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achref Fraj</title>
+  <link rel="icon"
+    href="https://scontent.ftun15-1.fna.fbcdn.net/v/t39.30808-1/274987621_1009958086598231_658099915654359372_n.jpg?stp=dst-jpg_p100x100&_nc_cat=103&ccb=1-5&_nc_sid=7206a8&_nc_ohc=aUW19C_jAOkAX__NA8m&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.ftun15-1.fna&oh=00_AT9fL_WOkNET7Fslsqlp9Q71EEoBi5c4CM6F9UbXN-d6SA&oe=623A893D"
+    type="image/icon type">
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inspiration&family=Kanit:wght@200&family=Meow+Script&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+  <div class="result">
+    <div class="score">Score</div>
+    <div class="resultContainer">
+
+      <div class="res1">
+        <div id="score1">0</div>
+        <div id="playerNmae1">player1</div>
+      </div>
+
+      <div class="res2">
+        <div id="score2">0</div>
+        <div id="playerNmae2">player2</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="container " id="container">
+
+  </div>
+  <div class="winning-message" id="winningMessage">
+    <div id="winner"></div>
+    <button id="restartButton">Restart</button>
+
+  </div>
+
+  <div class="formContainer" id="title">
+    <h1>TIC TAC TOE</h1>
+    <div class="starter">
+      <div class="play">
+        <label>Player1 Name</label>
+        <input id="input1" />
+      </div>
+      <div class="play">
+        <label>Player2 Name</label>
+        <input id="input2" />
+      </div>
+
+      <div class="frm1">
+        <label>Player1 choose X or O</label>
+        <div class="frm">
+          <input type="radio" name="btnRadio" id="btnRadio" value="X" />X
+        </div>
+        <div id="last1" class="frm">
+          <input type="radio" name="btnRadio" id="btnRadio" value="O" />O
+        </div>
+
+        <div class="frm1">
+          <label>Player2 choose X or O</label>
           <div class="frm">
             <input type="radio" name="btnRadio1" id="btnRadio1" value="X" />X
           </div>
           <div id="last" class="frm">
             <input type="radio" name="btnRadio1" id="btnRadio1" value="O" />O
           </div>
-          </div>
+        </div>
 
-        
-       
         <button id="btnNext">start game</button>
       </div>
     </div>
     <script src="./js/index.js"></script>
-  </body>
+
+
+</body>
+
 </html>

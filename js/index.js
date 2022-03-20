@@ -27,10 +27,6 @@ btnNext.onclick = () => {
   if (check()) {
     document.querySelector(".starter").remove();
     document.getElementById("title").remove();
-    const playerDiv1 = document.createElement("div");
-    const playerDiv2 = document.createElement("div");
-    const header = document.createElement("div");
-    playerDiv1.classList.add("playerDiv1");
     localStorage.setItem(
       "info",
       JSON.stringify([
@@ -39,14 +35,15 @@ btnNext.onclick = () => {
       ])
     );
 
-    playerDiv1.innerText = `${player1.value}: ${plyer1Choose}`;
-    playerDiv2.innerText = `${player2.value}: ${plyer2Choose}`;
-    header.append(playerDiv1, playerDiv2);
-    header.classList.add("header");
-    document.querySelector(".result").style.display = "flex"  
-    container.style.display = "flex";
-    container.before(header);
+    document.getElementById(
+      "playerNmae1"
+    ).innerText = `${player1.value}:  ${plyer1Choose}`;
+    document.getElementById(
+      "playerNmae2"
+    ).innerText = `${player2.value}:  ${plyer2Choose}`;
 
+    document.querySelector(".result").style.display = "flex";
+    container.style.display = "flex";
     for (let i = 1; i <= 9; i++) {
       container.innerHTML += `<div class="square" id=${i} onClick="FillXorO(this)"></div>`;
     }
@@ -75,46 +72,6 @@ const FillXorO = (that) => {
 };
 
 // calcul game result
-const calcResult = (currentCLass) => {
-  for (let val of WINNING_COMBINTAIONS) {
-    if (array[val[0]] && array[val[1]] && array[val[2]]) {
-      if (
-        array[val[0]].classList[1] == currentCLass &&
-        array[val[1]].classList[1] == currentCLass &&
-        array[val[2]].classList[1] == currentCLass
-      ) {
-        const winner = document.createElement("div");
-        const button = document.createElement("button");
-        const container2 = document.createElement("div");
-        container2.append(winner);
-        winner.classList.add("winnerText");
-        winner.after(button);
-        container2.classList.add("winner");
-        button.innerText = "Reset";
-        winner.innerText =
-          currentCLass === plyer1Choose
-            ? player1.value + " win!"
-            : player2.value + " win!";
-        const data = JSON.parse(localStorage.getItem("info"));
-        if (currentCLass === data[0].plyer1Choose) {
-          data[0].result = data[0].result + 1;
-        } else {
-          data[1].result = data[1].result + 1;
-        }
-        localStorage.setItem("info", JSON.stringify(data));
-
-        document.getElementById("res1").innerText = "R: " + data[0].result;
-        document.getElementById("res2").innerText = "R: " + data[1].result;
-
-        button.addEventListener("click", () => {
-          Reset();
-          return container2.remove();
-        });
-        return document.getElementsByTagName("body")[0].after(container2);
-      }
-    }
-  }
-};
 
 // check the forum if it's filled correctly
 const check = () => {
@@ -191,5 +148,50 @@ const Reset = () => {
       elm[i].classList.remove(elm[i].classList[1]);
     }
   }
+  array = [];
   return (XO = true);
+};
+
+// Result calc function
+
+const calcResult = (currentCLass) => {
+  document.getElementById("restartButton").addEventListener("click", () => {
+    Reset();
+    document.getElementById("winningMessage").style.display = "none";
+  });
+  for (let val of WINNING_COMBINTAIONS) {
+    if (array[val[0]] && array[val[1]] && array[val[2]]) {
+      if (
+        array[val[0]].classList[1] == currentCLass &&
+        array[val[1]].classList[1] == currentCLass &&
+        array[val[2]].classList[1] == currentCLass
+      ) {
+        document.getElementById("winner").innerText =
+          currentCLass === plyer1Choose
+            ? player1.value + " win!"
+            : player2.value + " win!";
+        document.getElementById("winningMessage").style.display = "flex";
+        const data = JSON.parse(localStorage.getItem("info"));
+        if (currentCLass === data[0].plyer1Choose) {
+          data[0].result = data[0].result + 1;
+        } else {
+          data[1].result = data[1].result + 1;
+        }
+        localStorage.setItem("info", JSON.stringify(data));
+        document.getElementById("score1").innerText = data[0].result;
+        document.getElementById("score2").innerText = data[1].result;
+        return;
+      }
+    }
+  }
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i]) {
+      count = count + 1;
+    }
+  }
+  if (count === 9) {
+    document.getElementById("winningMessage").style.display = "flex";
+    return (document.getElementById("winner").innerText = "Tie!");
+  }
 };
